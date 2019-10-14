@@ -17,13 +17,13 @@ docker run dimdm/icetools icepack -h
 ## UDEV
 You may also add a line like
 ```
-ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6014", OWNER="user", GROUP="dialout", MODE="0777"
+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6014", GROUP="dialout", MODE="0777"
 ```
 to a file like /etc/udev/rules.d/10-upduino.rules and restart udev:
 ```
 sudo service udev restart
 ```
-to add support for FTDI based devices like the Upduino. You may also remove the MODE parameter and add yourself to the dialout group:
+to add support for FTDI based devices like the Upduino. You also have to add yourself to the dialout group:
 ```
 sudo usermod -a -G dialout <username>
 ```
