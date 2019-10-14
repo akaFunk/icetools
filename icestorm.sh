@@ -22,10 +22,10 @@ cd $DIR/icestorm
 echo "Building icestorm..."
 if [[ "$UNAME_STR" == "Darwin" ]] && hash brew 2>/dev/null; then
 	PYTHONPATH=$(brew --prefix)/lib/python$PYTHONVERSION/site-packages/ make clean
-	PYTHONPATH=$(brew --prefix)/lib/python$PYTHONVERSION/site-packages/ make
+	PYTHONPATH=$(brew --prefix)/lib/python$PYTHONVERSION/site-packages/ make -j4
 else
 	make clean
-	make
+	make -j4
 fi
 
 echo "Installing icestorm..."

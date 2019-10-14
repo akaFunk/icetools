@@ -29,14 +29,14 @@ make clean
 if [[ ! `uname -a` == *"raspberrypi"* ]]; then
 	echo "Building yosys-abc..."
 	uname -a
-	make yosys-abc
+	make -j4 yosys-abc
 fi
 
 echo "Building yosys..."
 if [[ "$UNAME_STR" == "Darwin" ]] && hash brew 2>/dev/null; then
 	PYTHONPATH=$(brew --prefix)/lib/python$PYTHONVERSION/site-packages/ make
 else
-	make
+	make -j4
 fi
 
 echo "Installing yosys..."
